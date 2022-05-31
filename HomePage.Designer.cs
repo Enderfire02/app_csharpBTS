@@ -1,7 +1,7 @@
 ﻿
 namespace BTS_Csharp
 {
-    partial class HomePageB
+    partial class HomePage
     {
         /// <summary>
         ///  Required designer variable.
@@ -36,7 +36,6 @@ namespace BTS_Csharp
             this.panel1 = new System.Windows.Forms.Panel();
             this.Clients = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.Name = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Add_product = new System.Windows.Forms.Button();
             this.Remove_product = new System.Windows.Forms.Button();
@@ -46,11 +45,15 @@ namespace BTS_Csharp
             this.label7 = new System.Windows.Forms.Label();
             this.Change = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.StocksLabel = new System.Windows.Forms.Label();
             this.ProductList = new System.Windows.Forms.ListView();
             this.Stock = new System.Windows.Forms.NumericUpDown();
             this.Price = new System.Windows.Forms.NumericUpDown();
+            this.Name = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Stock)).BeginInit();
@@ -135,14 +138,6 @@ namespace BTS_Csharp
             this.label1.Size = new System.Drawing.Size(0, 15);
             this.label1.TabIndex = 8;
             // 
-            // Name
-            // 
-            this.Name.Location = new System.Drawing.Point(48, 487);
-            this.Name.Name = "Name";
-            this.Name.PlaceholderText = "Nom";
-            this.Name.Size = new System.Drawing.Size(182, 23);
-            this.Name.TabIndex = 9;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -181,6 +176,7 @@ namespace BTS_Csharp
             this.Type.PlaceholderText = "Type";
             this.Type.Size = new System.Drawing.Size(182, 23);
             this.Type.TabIndex = 16;
+            this.Type.TextChanged += new System.EventHandler(this.Type_TextChanged);
             // 
             // label5
             // 
@@ -219,6 +215,10 @@ namespace BTS_Csharp
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Name);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.StocksLabel);
             this.panel2.Controls.Add(this.ProductList);
@@ -229,14 +229,40 @@ namespace BTS_Csharp
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.Remove_product);
             this.panel2.Controls.Add(this.Add_product);
-            this.panel2.Controls.Add(this.Name);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.Stock);
             this.panel2.Controls.Add(this.Price);
             this.panel2.Location = new System.Drawing.Point(252, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1052, 637);
+            this.panel2.Size = new System.Drawing.Size(1073, 637);
             this.panel2.TabIndex = 22;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(702, 40);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Rechercher";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(170, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(168, 27);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Rechercher un produit";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(371, 40);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.PlaceholderText = "Nom du produit ";
+            this.textBox2.Size = new System.Drawing.Size(290, 23);
+            this.textBox2.TabIndex = 27;
             // 
             // label2
             // 
@@ -262,9 +288,9 @@ namespace BTS_Csharp
             this.ProductList.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ProductList.FullRowSelect = true;
             this.ProductList.HideSelection = false;
-            this.ProductList.Location = new System.Drawing.Point(47, 29);
+            this.ProductList.Location = new System.Drawing.Point(47, 90);
             this.ProductList.Name = "ProductList";
-            this.ProductList.Size = new System.Drawing.Size(982, 425);
+            this.ProductList.Size = new System.Drawing.Size(982, 364);
             this.ProductList.TabIndex = 22;
             this.ProductList.UseCompatibleStateImageBehavior = false;
             this.ProductList.View = System.Windows.Forms.View.Details;
@@ -285,17 +311,25 @@ namespace BTS_Csharp
             this.Price.Size = new System.Drawing.Size(186, 23);
             this.Price.TabIndex = 24;
             // 
-            // HomePageB
+            // Name
+            // 
+            this.Name.Location = new System.Drawing.Point(47, 487);
+            this.Name.Name = "Name";
+            this.Name.PlaceholderText = "Nom";
+            this.Name.Size = new System.Drawing.Size(180, 23);
+            this.Name.TabIndex = 31;
+            // 
+            // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1293, 635);
+            this.ClientSize = new System.Drawing.Size(1325, 635);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name.Text = "HomePageB";
+            //this.Name = "HomePage";
             this.Load += new System.EventHandler(this.HomePage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -317,7 +351,6 @@ namespace BTS_Csharp
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button Clients;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Name;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Add_product;
         private System.Windows.Forms.Button Remove_product;
@@ -332,6 +365,10 @@ namespace BTS_Csharp
         private System.Windows.Forms.NumericUpDown Stock;
         private System.Windows.Forms.Label StocksLabel;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Name;
     }
 }
 

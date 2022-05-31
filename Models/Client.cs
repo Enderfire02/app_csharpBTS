@@ -12,6 +12,13 @@ namespace app_csharpBTS.Models
             Partakes = new HashSet<Partake>();
         }
 
+        public Client(string nameCli, string firstnameCli, string emailCli)
+        {
+            NameCli = nameCli;
+            FirstnameCli = firstnameCli;
+            EmailCli = emailCli;
+        }
+
         public int IdCli { get; set; }
         public string NameCli { get; set; }
         public string FirstnameCli { get; set; }

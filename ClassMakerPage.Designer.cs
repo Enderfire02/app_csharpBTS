@@ -1,7 +1,7 @@
 ﻿
 namespace BTS_Csharp
 {
-    partial class Form1
+    partial class ClassMakerPage
     {
         /// <summary>
         /// Required designer variable.
@@ -31,12 +31,11 @@ namespace BTS_Csharp
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.NameClassText = new System.Windows.Forms.TextBox();
             this.PlaceClassText = new System.Windows.Forms.TextBox();
             this.Stock = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.add_class = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Stock)).BeginInit();
             this.SuspendLayout();
@@ -60,26 +59,6 @@ namespace BTS_Csharp
             this.label1.TabIndex = 1;
             this.label1.Text = "Ajouter un cours ";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(124, 228);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 48);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Ajouter";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(356, 228);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 48);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Annuler";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // NameClassText
             // 
             this.NameClassText.Location = new System.Drawing.Point(124, 116);
@@ -92,7 +71,7 @@ namespace BTS_Csharp
             // 
             this.PlaceClassText.Location = new System.Drawing.Point(356, 116);
             this.PlaceClassText.Name = "PlaceClassText";
-            this.PlaceClassText.PlaceholderText = "Lieu";
+            this.PlaceClassText.PlaceholderText = "Nombre de personnes ";
             this.PlaceClassText.Size = new System.Drawing.Size(152, 23);
             this.PlaceClassText.TabIndex = 4;
             // 
@@ -112,21 +91,30 @@ namespace BTS_Csharp
             this.label2.TabIndex = 25;
             this.label2.Text = "animateur :";
             // 
-            // Form1
+            // add_class
+            // 
+            this.add_class.Location = new System.Drawing.Point(356, 164);
+            this.add_class.Name = "add_class";
+            this.add_class.Size = new System.Drawing.Size(152, 48);
+            this.add_class.TabIndex = 26;
+            this.add_class.Text = "Ajouter";
+            this.add_class.UseVisualStyleBackColor = true;
+            this.add_class.Click += new System.EventHandler(this.add_class_Click);
+            // 
+            // ClassMakerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(652, 381);
+            this.ClientSize = new System.Drawing.Size(652, 306);
+            this.Controls.Add(this.add_class);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Stock);
             this.Controls.Add(this.PlaceClassText);
             this.Controls.Add(this.NameClassText);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "ClassMakerPage";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -141,11 +129,11 @@ namespace BTS_Csharp
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button remove_class;
         private System.Windows.Forms.TextBox NameClassText;
         private System.Windows.Forms.TextBox PlaceClassText;
         private System.Windows.Forms.NumericUpDown Stock;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button add_class;
     }
 }

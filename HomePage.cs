@@ -1,4 +1,5 @@
 ﻿
+using app_csharpBTS;
 using app_csharpBTS.Manager;
 using app_csharpBTS.Models;
 using System;
@@ -13,9 +14,9 @@ using System.Windows.Forms;
 
 namespace BTS_Csharp
 {
-    public partial class HomePageB : Form
+    public partial class HomePage : Form
     {
-        public HomePageB()
+        public HomePage()
         {
             InitializeComponent();
         }
@@ -102,8 +103,8 @@ namespace BTS_Csharp
             }
             else
             {
-               
-               Product product = new Product(Name.Text, Type.Text, (int) Price.Value, (int) Stock.Value);
+
+                Product product = new Product(Name.Text, Type.Text, (int)Price.Value, (int)Stock.Value);
                 ProductManager.AddProduct(product);
             }
         }
@@ -133,12 +134,15 @@ namespace BTS_Csharp
 
         private void logout_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void Clients_Click(object sender, EventArgs e)
         {
-
+            ClassPage2 form = new ClassPage2();
+            form.Show();
+            
+            
         }
 
         private void Alertes_Click(object sender, EventArgs e)
@@ -148,7 +152,7 @@ namespace BTS_Csharp
 
         private void Stocks_Click(object sender, EventArgs e)
         {
-
+            
         }
       
         private void label4_Click(object sender, EventArgs e)
@@ -197,6 +201,16 @@ namespace BTS_Csharp
         }
 
         private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Type_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Name_TextChanged(object sender, EventArgs e)
         {
 
         }

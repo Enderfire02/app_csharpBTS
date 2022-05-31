@@ -22,7 +22,7 @@ namespace app_csharpBTS
 
             if (LoginPage.Authentified)
             {
-                Application.Run(new HomePageB());
+                Application.Run(new HomePage());
             }
         }
     }

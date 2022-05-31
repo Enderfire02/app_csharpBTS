@@ -7,6 +7,12 @@ namespace app_csharpBTS.Models
 {
     public partial class Partake
     {
+        public Partake(int idClass, int idCli)
+        {
+            IdClass = idClass;
+            IdCli = idCli;
+        }
+
         public int IdClass { get; set; }
         public int IdCli { get; set; }
 

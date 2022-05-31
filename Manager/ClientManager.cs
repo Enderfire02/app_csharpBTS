@@ -46,5 +46,6 @@ namespace app_csharpBTS.Manager
             => Context.Clients.FirstOrDefault(client => client.NameCli == NameCli);
         public List<Client> GetClients()
             => Context.Clients.ToList();
+        
     }
 }
