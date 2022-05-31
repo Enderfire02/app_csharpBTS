@@ -29,12 +29,6 @@ namespace app_csharpBTS
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ClassPage2";
-
-
             this.panel2 = new System.Windows.Forms.Panel();
             this.clientName = new System.Windows.Forms.TextBox();
             this.remove_class = new System.Windows.Forms.Button();
@@ -98,8 +92,9 @@ namespace app_csharpBTS
             this.remove_class.Name = "remove_class";
             this.remove_class.Size = new System.Drawing.Size(225, 69);
             this.remove_class.TabIndex = 34;
-            this.remove_class.Text = "retirer un cour";
+            this.remove_class.Text = "retirer un cours";
             this.remove_class.UseVisualStyleBackColor = true;
+            this.remove_class.Click += new System.EventHandler(this.remove_class_Click);
             // 
             // class_tab
             // 
@@ -130,7 +125,7 @@ namespace app_csharpBTS
             this.add_class_btn.Name = "add_class_btn";
             this.add_class_btn.Size = new System.Drawing.Size(225, 69);
             this.add_class_btn.TabIndex = 32;
-            this.add_class_btn.Text = "ajouter un cour";
+            this.add_class_btn.Text = "ajouter un cours";
             this.add_class_btn.UseVisualStyleBackColor = true;
             this.add_class_btn.Click += new System.EventHandler(this.add_class_btn_Click);
             // 
@@ -141,6 +136,7 @@ namespace app_csharpBTS
             this.email.PlaceholderText = "email";
             this.email.Size = new System.Drawing.Size(140, 23);
             this.email.TabIndex = 30;
+            this.email.TextChanged += new System.EventHandler(this.email_TextChanged);
             // 
             // label7
             // 
@@ -157,6 +153,7 @@ namespace app_csharpBTS
             this.Firstname.PlaceholderText = "Prenom";
             this.Firstname.Size = new System.Drawing.Size(182, 23);
             this.Firstname.TabIndex = 28;
+            this.Firstname.TextChanged += new System.EventHandler(this.Firstname_TextChanged);
             // 
             // label5
             // 
@@ -173,7 +170,7 @@ namespace app_csharpBTS
             this.Remove_cli.Name = "Remove_cli";
             this.Remove_cli.Size = new System.Drawing.Size(278, 69);
             this.Remove_cli.TabIndex = 26;
-            this.Remove_cli.Text = "retirer un client du cour";
+            this.Remove_cli.Text = "retirer un client du cours";
             this.Remove_cli.UseVisualStyleBackColor = true;
             this.Remove_cli.Click += new System.EventHandler(this.Remove_cli_Click);
             // 
@@ -184,7 +181,7 @@ namespace app_csharpBTS
             this.Add_cli.Name = "Add_cli";
             this.Add_cli.Size = new System.Drawing.Size(278, 69);
             this.Add_cli.TabIndex = 25;
-            this.Add_cli.Text = "ajouter un client au cour";
+            this.Add_cli.Text = "ajouter un client au cours";
             this.Add_cli.UseVisualStyleBackColor = true;
             this.Add_cli.Click += new System.EventHandler(this.Add_cli_Click);
             // 
@@ -288,14 +285,14 @@ namespace app_csharpBTS
             this.Stocks.UseVisualStyleBackColor = true;
             this.Stocks.Click += new System.EventHandler(this.Stocks_Click);
             // 
-            // ClassPage
+            // ClassPage2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1562, 691);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "ClassPage";
+            this.Name = "ClassPage2";
             this.Text = "ClassPage";
             this.Load += new System.EventHandler(this.ClassPage_Load);
             this.panel2.ResumeLayout(false);
@@ -303,6 +300,7 @@ namespace app_csharpBTS
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

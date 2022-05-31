@@ -19,6 +19,7 @@ namespace app_csharpBTS.Models
 
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Decoclass> Decoclasses { get; set; }
+        public virtual DbSet<Fournisseur> Fournisseurs { get; set; }
         public virtual DbSet<Organize> Organizes { get; set; }
         public virtual DbSet<Partake> Partakes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
@@ -35,8 +36,8 @@ namespace app_csharpBTS.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasCharSet("latin1")
-                .UseCollation("latin1_swedish_ci");
+            modelBuilder.HasCharSet("utf8")
+                .UseCollation("utf8_general_ci");
 
             modelBuilder.Entity<Client>(entity =>
             {
@@ -72,8 +73,7 @@ namespace app_csharpBTS.Models
 
                 entity.ToTable("decoclass");
 
-                entity.HasIndex(e => e.IdStaff, "Class_Staff_AK")
-                    .IsUnique();
+                entity.HasIndex(e => e.IdStaff, "Class_Staff_FK");
 
                 entity.Property(e => e.IdClass)
                     .HasColumnType("int(11)")
@@ -94,10 +94,46 @@ namespace app_csharpBTS.Models
                     .HasColumnName("Place_Class");
 
                 entity.HasOne(d => d.IdStaffNavigation)
-                    .WithOne(p => p.Decoclass)
-                    .HasForeignKey<Decoclass>(d => d.IdStaff)
+                    .WithMany(p => p.Decoclasses)
+                    .HasForeignKey(d => d.IdStaff)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Class_Staff_FK");
+            });
+
+            modelBuilder.Entity<Fournisseur>(entity =>
+            {
+                entity.HasKey(e => e.IdFourn)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("fournisseur");
+
+                entity.Property(e => e.IdFourn)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Id_Fourn");
+
+                entity.Property(e => e.AddrFounr)
+                    .IsRequired()
+                    .HasMaxLength(250)
+                    .HasColumnName("Addr_Founr");
+
+                entity.Property(e => e.CityFourn)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("City_Fourn");
+
+                entity.Property(e => e.CpFounr)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("CP_Founr");
+
+                entity.Property(e => e.EmailFounr)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("Email_Founr");
+
+                entity.Property(e => e.NameFourn)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("Name_Fourn");
             });
 
             modelBuilder.Entity<Organize>(entity =>
@@ -169,9 +205,15 @@ namespace app_csharpBTS.Models
 
                 entity.ToTable("product");
 
+                entity.HasIndex(e => e.IdFourn, "Product_Fournisseur_FK");
+
                 entity.Property(e => e.IdProduct)
                     .HasColumnType("int(11)")
                     .HasColumnName("ID_Product");
+
+                entity.Property(e => e.IdFourn)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Id_Fourn");
 
                 entity.Property(e => e.NameProduct)
                     .IsRequired()
@@ -190,6 +232,12 @@ namespace app_csharpBTS.Models
                     .IsRequired()
                     .HasMaxLength(25)
                     .HasColumnName("Type_Product");
+
+                entity.HasOne(d => d.IdFournNavigation)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.IdFourn)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Product_Fournisseur_FK");
             });
 
             modelBuilder.Entity<staff>(entity =>

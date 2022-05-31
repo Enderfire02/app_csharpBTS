@@ -17,6 +17,7 @@ namespace app_csharpBTS
     public partial class ClassPage2 : Form
     {
         private Decoclass classSelected;
+        private Client clientSelected;
         classManager classManager = new classManager();
         PartakesManager partakesManager = new PartakesManager();
         ClientManager clientManager = new ClientManager();
@@ -81,13 +82,15 @@ namespace app_csharpBTS
             {
                 classSelected = selected[0].Tag as Decoclass;
             }
+
+
             member_tab.Items.Clear();
 
             member_tab.Columns.Clear();
-            member_tab.Columns.Add(new ColumnHeader() { Name = "Id Cours", Text = "Id Cours", Width = 250 });
-            member_tab.Columns.Add(new ColumnHeader() { Name = "Nom Client", Text = "Nom Client", Width = 250 });
-            member_tab.Columns.Add(new ColumnHeader() { Name = "Prenom Client", Text = "Prenom Client", Width = 250 });
-            member_tab.Columns.Add(new ColumnHeader() { Name = "Email", Text = "email", Width = 250 });
+            member_tab.Columns.Add(new ColumnHeader() { Name = "Id Cours", Text = "Id Cours", Width = 100 });
+            member_tab.Columns.Add(new ColumnHeader() { Name = "Nom Client", Text = "Nom Client", Width = 100 });
+            member_tab.Columns.Add(new ColumnHeader() { Name = "Prenom Client", Text = "Prenom Client", Width = 100 });
+            member_tab.Columns.Add(new ColumnHeader() { Name = "Email", Text = "email", Width = 100 });
             // code listview clien par classes
             foreach (Partake partake in partakesManager.FindClassClient(classSelected.IdClass))
             {
@@ -149,8 +152,42 @@ namespace app_csharpBTS
         {
 
         }
-        private void Remove_cli_Click(object sender, EventArgs e) { }
+        private void Remove_cli_Click(object sender, EventArgs e) 
+        {
+            if (string.IsNullOrEmpty(clientName.Text) || string.IsNullOrEmpty(Firstname.Text) || clientSelected == null)
+            {
+                MessageBox.Show("Il semblerai que vous avez pas sélectionné de champs");
+            }
+            else
+            {
+                clientManager.RemoveClient(clientSelected);
+
+            }
+        }
         private void member_tab_DoubleClick(object sender, EventArgs e) { }
+
+        private void email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Firstname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void remove_class_Click(object sender, EventArgs e)
+        {
+             if (classSelected == null)
+            {
+                MessageBox.Show("Il semblerai que vous avez pas sélectionné de champs");
+            }
+            else
+            {
+                classManager.RemoveClass(classSelected);
+
+            }
+        }
     }
     #endregion
 }

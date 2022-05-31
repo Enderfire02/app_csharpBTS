@@ -18,6 +18,7 @@ namespace app_csharpBTS.Models
             TypeProduct = typeProduct;
             PriceProduct = priceProduct;
             StockProduct = stockProduct;
+            
         }
 
         public int IdProduct { get; set; }
@@ -25,7 +26,9 @@ namespace app_csharpBTS.Models
         public string TypeProduct { get; set; }
         public int PriceProduct { get; set; }
         public int StockProduct { get; set; }
+        public int IdFourn { get; set; }
 
+        public virtual Fournisseur IdFournNavigation { get; set; }
         public virtual ICollection<Organize> Organizes { get; set; }
     }
 }

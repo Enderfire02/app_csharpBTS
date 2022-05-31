@@ -29,6 +29,7 @@ namespace BTS_Csharp
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.NumericUpDown Staffid;
             this.Stocks = new System.Windows.Forms.Button();
             this.Alertes = new System.Windows.Forms.Button();
             this.logout = new System.Windows.Forms.Button();
@@ -45,6 +46,8 @@ namespace BTS_Csharp
             this.label7 = new System.Windows.Forms.Label();
             this.Change = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.FounrData = new System.Windows.Forms.ListView();
+            this.Name = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -53,11 +56,12 @@ namespace BTS_Csharp
             this.ProductList = new System.Windows.Forms.ListView();
             this.Stock = new System.Windows.Forms.NumericUpDown();
             this.Price = new System.Windows.Forms.NumericUpDown();
-            this.Name = new System.Windows.Forms.TextBox();
+            Staffid = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Stock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Price)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(Staffid)).BeginInit();
             this.SuspendLayout();
             // 
             // Stocks
@@ -215,6 +219,8 @@ namespace BTS_Csharp
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(Staffid);
+            this.panel2.Controls.Add(this.FounrData);
             this.panel2.Controls.Add(this.Name);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label4);
@@ -236,6 +242,28 @@ namespace BTS_Csharp
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1073, 637);
             this.panel2.TabIndex = 22;
+            // 
+            // FounrData
+            // 
+            this.FounrData.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.FounrData.FullRowSelect = true;
+            this.FounrData.HideSelection = false;
+            this.FounrData.Location = new System.Drawing.Point(47, 380);
+            this.FounrData.Name = "FounrData";
+            this.FounrData.Size = new System.Drawing.Size(982, 80);
+            this.FounrData.TabIndex = 32;
+            this.FounrData.UseCompatibleStateImageBehavior = false;
+            this.FounrData.View = System.Windows.Forms.View.Details;
+            this.FounrData.SelectedIndexChanged += new System.EventHandler(this.FounrData_SelectedIndexChanged);
+            // 
+            // Name
+            // 
+            this.Name.Location = new System.Drawing.Point(47, 487);
+            this.Name.Name = "Name";
+            this.Name.PlaceholderText = "Nom";
+            this.Name.Size = new System.Drawing.Size(180, 23);
+            this.Name.TabIndex = 31;
+            this.Name.Text = "HomePage";
             // 
             // button1
             // 
@@ -267,7 +295,7 @@ namespace BTS_Csharp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(804, 492);
+            this.label2.Location = new System.Drawing.Point(732, 490);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 15);
             this.label2.TabIndex = 26;
@@ -276,7 +304,7 @@ namespace BTS_Csharp
             // StocksLabel
             // 
             this.StocksLabel.AutoSize = true;
-            this.StocksLabel.Location = new System.Drawing.Point(517, 490);
+            this.StocksLabel.Location = new System.Drawing.Point(479, 490);
             this.StocksLabel.Name = "StocksLabel";
             this.StocksLabel.Size = new System.Drawing.Size(47, 15);
             this.StocksLabel.TabIndex = 25;
@@ -290,34 +318,36 @@ namespace BTS_Csharp
             this.ProductList.HideSelection = false;
             this.ProductList.Location = new System.Drawing.Point(47, 90);
             this.ProductList.Name = "ProductList";
-            this.ProductList.Size = new System.Drawing.Size(982, 364);
+            this.ProductList.Size = new System.Drawing.Size(982, 284);
             this.ProductList.TabIndex = 22;
             this.ProductList.UseCompatibleStateImageBehavior = false;
             this.ProductList.View = System.Windows.Forms.View.Details;
             this.ProductList.SelectedIndexChanged += new System.EventHandler(this.ProductList_SelectedIndexChanged);
+            this.ProductList.Click += new System.EventHandler(this.ProductList_Click);
             this.ProductList.DoubleClick += new System.EventHandler(this.ProductList_DoubleClick);
             // 
             // Stock
             // 
-            this.Stock.Location = new System.Drawing.Point(564, 487);
+            this.Stock.Location = new System.Drawing.Point(532, 487);
             this.Stock.Name = "Stock";
             this.Stock.Size = new System.Drawing.Size(182, 23);
             this.Stock.TabIndex = 23;
             // 
             // Price
             // 
-            this.Price.Location = new System.Drawing.Point(843, 487);
+            this.Price.Location = new System.Drawing.Point(771, 488);
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(186, 23);
             this.Price.TabIndex = 24;
+            this.Price.ValueChanged += new System.EventHandler(this.Price_ValueChanged);
             // 
-            // Name
+            // Staffid
             // 
-            this.Name.Location = new System.Drawing.Point(47, 487);
-            this.Name.Name = "Name";
-            this.Name.PlaceholderText = "Nom";
-            this.Name.Size = new System.Drawing.Size(180, 23);
-            this.Name.TabIndex = 31;
+            Staffid.Location = new System.Drawing.Point(920, 576);
+            Staffid.Name = "Staffid";
+            Staffid.Size = new System.Drawing.Size(120, 23);
+            Staffid.TabIndex = 33;
+            Staffid.ValueChanged += new System.EventHandler(this.Staffid_ValueChanged);
             // 
             // HomePage
             // 
@@ -329,7 +359,7 @@ namespace BTS_Csharp
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            //this.Name = "HomePage";
+            this.Name.Text = "HomePage";
             this.Load += new System.EventHandler(this.HomePage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -337,6 +367,7 @@ namespace BTS_Csharp
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Stock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Price)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(Staffid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,6 +400,7 @@ namespace BTS_Csharp
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox Name;
+        private System.Windows.Forms.ListView FounrData;
     }
 }
 

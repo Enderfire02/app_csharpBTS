@@ -47,7 +47,7 @@ namespace app_csharpBTS.Manager
             => Context.Products.ToList();
         public List<Product> AllProducts() 
         {
-            var list = Context.Products.AsQueryable();
+            var list = Context.Products.Include(p => p.IdFournNavigation).AsQueryable();
             return list.ToList();
         }
     }
