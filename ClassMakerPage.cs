@@ -18,6 +18,7 @@ namespace BTS_Csharp
         {
             InitializeComponent();
         }
+        classManager classManager = new classManager();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -29,11 +30,21 @@ namespace BTS_Csharp
 
         }
 
-       
+
 
         private void add_class_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(NameClassText.Text) || string.IsNullOrEmpty(nbPersonnes.Text))
+            {
+                MessageBox.Show("Oups !! il semblerai que vous avez oublié de renseigner certains champs");
+                ;
+            }
+            else
+            {
+                Decoclass newDecoclass = new Decoclass(NameClassText.Text, PlaceClassText.Text, (int)anim.Value);
+                classManager.AddClass(newDecoclass);
+            }
         }
+
     }
 }

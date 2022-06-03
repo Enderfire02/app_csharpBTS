@@ -33,11 +33,11 @@ namespace BTS_Csharp
             this.label1 = new System.Windows.Forms.Label();
             this.NameClassText = new System.Windows.Forms.TextBox();
             this.PlaceClassText = new System.Windows.Forms.TextBox();
-            this.Stock = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
+            this.anim = new System.Windows.Forms.NumericUpDown();
+            this.nbPersonnes = new System.Windows.Forms.Label();
             this.add_class = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Stock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anim)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,21 +75,21 @@ namespace BTS_Csharp
             this.PlaceClassText.Size = new System.Drawing.Size(152, 23);
             this.PlaceClassText.TabIndex = 4;
             // 
-            // Stock
+            // anim
             // 
-            this.Stock.Location = new System.Drawing.Point(228, 164);
-            this.Stock.Name = "Stock";
-            this.Stock.Size = new System.Drawing.Size(48, 23);
-            this.Stock.TabIndex = 24;
+            this.anim.Location = new System.Drawing.Point(228, 164);
+            this.anim.Name = "anim";
+            this.anim.Size = new System.Drawing.Size(48, 23);
+            this.anim.TabIndex = 24;
             // 
-            // label2
+            // nbPersonnes
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(139, 166);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "animateur :";
+            this.nbPersonnes.AutoSize = true;
+            this.nbPersonnes.Location = new System.Drawing.Point(139, 166);
+            this.nbPersonnes.Name = "nbPersonnes";
+            this.nbPersonnes.Size = new System.Drawing.Size(67, 15);
+            this.nbPersonnes.TabIndex = 25;
+            this.nbPersonnes.Text = "animateur :";
             // 
             // add_class
             // 
@@ -108,8 +108,8 @@ namespace BTS_Csharp
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(652, 306);
             this.Controls.Add(this.add_class);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.Stock);
+            this.Controls.Add(this.nbPersonnes);
+            this.Controls.Add(this.anim);
             this.Controls.Add(this.PlaceClassText);
             this.Controls.Add(this.NameClassText);
             this.Controls.Add(this.panel1);
@@ -119,7 +119,7 @@ namespace BTS_Csharp
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Stock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,8 +132,8 @@ namespace BTS_Csharp
         private System.Windows.Forms.Button remove_class;
         private System.Windows.Forms.TextBox NameClassText;
         private System.Windows.Forms.TextBox PlaceClassText;
-        private System.Windows.Forms.NumericUpDown Stock;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown anim;
+        private System.Windows.Forms.Label nbPersonnes;
         private System.Windows.Forms.Button add_class;
     }
 }

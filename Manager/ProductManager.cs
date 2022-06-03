@@ -32,10 +32,25 @@ namespace app_csharpBTS.Manager
                 return false;
             return RemoveProduct(product);
         }
-        public bool EditProduct(Product product)
+        public void EditProduct(int id, string Name, string Type, int price, int Stock)
         {
-            Context.Entry(product).State = EntityState.Modified;
-            return (Context.SaveChanges() > 0);
+            
+
+            Models.Product product = FindProductID(id);
+            if (product.NameProduct != Name)
+                product.NameProduct = Name;
+            Context.SaveChanges();
+            if (product.TypeProduct != Type)
+                product.TypeProduct = Type;
+            Context.SaveChanges();
+            if (product.PriceProduct != price)
+                product.PriceProduct = price;
+            Context.SaveChanges();
+            if (product.StockProduct != Stock)
+                product.StockProduct = Stock;
+            Context.SaveChanges();
+
+
         }
         public Product FindProductID(int idProduct)
         {

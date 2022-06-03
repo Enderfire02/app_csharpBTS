@@ -12,6 +12,13 @@ namespace app_csharpBTS.Models
             Partakes = new HashSet<Partake>();
         }
 
+        public Decoclass(string placeClass, string nameClass, int idStaff)
+        {
+            PlaceClass = placeClass;
+            NameClass = nameClass;
+            IdStaff = idStaff;
+        }
+
         public int IdClass { get; set; }
         public string PlaceClass { get; set; }
         public string NameClass { get; set; }

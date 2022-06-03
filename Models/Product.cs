@@ -12,13 +12,13 @@ namespace app_csharpBTS.Models
             Organizes = new HashSet<Organize>();
         }
 
-        public Product(string nameProduct, string typeProduct, int priceProduct, int stockProduct)
+        public Product(int idProduct, string nameProduct, string typeProduct, int priceProduct, int stockProduct)
         {
+            IdProduct = idProduct;
             NameProduct = nameProduct;
             TypeProduct = typeProduct;
             PriceProduct = priceProduct;
             StockProduct = stockProduct;
-            
         }
 
         public int IdProduct { get; set; }

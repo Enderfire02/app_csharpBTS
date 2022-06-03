@@ -29,7 +29,6 @@ namespace BTS_Csharp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.NumericUpDown Staffid;
             this.Stocks = new System.Windows.Forms.Button();
             this.Alertes = new System.Windows.Forms.Button();
             this.logout = new System.Windows.Forms.Button();
@@ -46,7 +45,6 @@ namespace BTS_Csharp
             this.label7 = new System.Windows.Forms.Label();
             this.Change = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.FounrData = new System.Windows.Forms.ListView();
             this.Name = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,12 +54,12 @@ namespace BTS_Csharp
             this.ProductList = new System.Windows.Forms.ListView();
             this.Stock = new System.Windows.Forms.NumericUpDown();
             this.Price = new System.Windows.Forms.NumericUpDown();
-            Staffid = new System.Windows.Forms.NumericUpDown();
+            this.id = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Stock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Price)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(Staffid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.id)).BeginInit();
             this.SuspendLayout();
             // 
             // Stocks
@@ -219,8 +217,7 @@ namespace BTS_Csharp
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(Staffid);
-            this.panel2.Controls.Add(this.FounrData);
+            this.panel2.Controls.Add(this.id);
             this.panel2.Controls.Add(this.Name);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label4);
@@ -242,19 +239,6 @@ namespace BTS_Csharp
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1073, 637);
             this.panel2.TabIndex = 22;
-            // 
-            // FounrData
-            // 
-            this.FounrData.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.FounrData.FullRowSelect = true;
-            this.FounrData.HideSelection = false;
-            this.FounrData.Location = new System.Drawing.Point(47, 380);
-            this.FounrData.Name = "FounrData";
-            this.FounrData.Size = new System.Drawing.Size(982, 80);
-            this.FounrData.TabIndex = 32;
-            this.FounrData.UseCompatibleStateImageBehavior = false;
-            this.FounrData.View = System.Windows.Forms.View.Details;
-            this.FounrData.SelectedIndexChanged += new System.EventHandler(this.FounrData_SelectedIndexChanged);
             // 
             // Name
             // 
@@ -318,7 +302,7 @@ namespace BTS_Csharp
             this.ProductList.HideSelection = false;
             this.ProductList.Location = new System.Drawing.Point(47, 90);
             this.ProductList.Name = "ProductList";
-            this.ProductList.Size = new System.Drawing.Size(982, 284);
+            this.ProductList.Size = new System.Drawing.Size(982, 370);
             this.ProductList.TabIndex = 22;
             this.ProductList.UseCompatibleStateImageBehavior = false;
             this.ProductList.View = System.Windows.Forms.View.Details;
@@ -341,13 +325,12 @@ namespace BTS_Csharp
             this.Price.TabIndex = 24;
             this.Price.ValueChanged += new System.EventHandler(this.Price_ValueChanged);
             // 
-            // Staffid
+            // id
             // 
-            Staffid.Location = new System.Drawing.Point(920, 576);
-            Staffid.Name = "Staffid";
-            Staffid.Size = new System.Drawing.Size(120, 23);
-            Staffid.TabIndex = 33;
-            Staffid.ValueChanged += new System.EventHandler(this.Staffid_ValueChanged);
+            this.id.Location = new System.Drawing.Point(23, 529);
+            this.id.Name = "id";
+            this.id.Size = new System.Drawing.Size(30, 23);
+            this.id.TabIndex = 32;
             // 
             // HomePage
             // 
@@ -367,7 +350,7 @@ namespace BTS_Csharp
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Stock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Price)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(Staffid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.id)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,7 +383,7 @@ namespace BTS_Csharp
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox Name;
-        private System.Windows.Forms.ListView FounrData;
+        private System.Windows.Forms.NumericUpDown id;
     }
 }
 

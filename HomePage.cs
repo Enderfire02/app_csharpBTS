@@ -21,7 +21,7 @@ namespace BTS_Csharp
             InitializeComponent();
         }
         Product product = new Product();
-        ProductManager ProductManager = new ProductManager();
+        ProductManager productManager = new ProductManager();
         FournisseurManager fournisseurManager = new FournisseurManager();
         private Fournisseur FournisseurSelected;
         private Product ProductSelected;
@@ -30,7 +30,7 @@ namespace BTS_Csharp
         private void HomePage_Load(object sender, EventArgs e)
         {
             ProductList.Items.Clear();
-            foreach (Product product in ProductManager.AllProducts())
+            foreach (Product product in productManager.AllProducts())
             {
                 ListViewItem lvi = new ListViewItem(new string[]
                 {
@@ -44,18 +44,6 @@ namespace BTS_Csharp
                 });
                 lvi.Tag = product;
                 ProductList.Items.Add(lvi);
-                if (product.StockProduct <= 0) 
-                {
-                    lvi.BackColor = Color.Red;
-                }
-                else if (product.StockProduct <= 7)
-                {
-                    lvi.BackColor = Color.Orange;
-                }
-                else 
-                {
-                    lvi.BackColor = Color.LightGray;
-                }
             }
             ProductList.Columns.Clear();
             ProductList.Columns.Add(new ColumnHeader() { Name = "Nom", Text = "Nom", Width = 250 });
@@ -68,24 +56,24 @@ namespace BTS_Csharp
         
         private void HomePageB_load()
         {
-            //foreach (Product product in ProductManager.AllProducts())
-            //{
-            //    ListViewItem lvi = new ListViewItem(new string[]
-            //    {
-            //        product.IdProduct.ToString(),
-            //        product.NameProduct.ToString(),
-            //        product.StockProduct.ToString(),
-            //        product.PriceProduct.ToString(),
+            foreach (Product product in productManager.AllProducts())
+            {
+                ListViewItem lvi = new ListViewItem(new string[]
+               {
+                   product.IdProduct.ToString(),
+                   product.NameProduct.ToString(),
+                    product.StockProduct.ToString(),
+                    product.PriceProduct.ToString(),
                     
-            //    });
-            //    lvi.Tag = product;
-            //    ProductList.Items.Add(lvi);
-            //}
-            //ProductList.Columns.Clear();
-            //ProductList.Columns.Add(new ColumnHeader() { Name = "Nom", Text = "Nom", Width = 250 });
-            //ProductList.Columns.Add(new ColumnHeader() { Name = "Type", Text = "Type", Width = 250 });
-            //ProductList.Columns.Add(new ColumnHeader() { Name = "Stock", Text = "Stock", Width = 250 });
-            //ProductList.Columns.Add(new ColumnHeader() { Name = "Prix", Text = "Prix", Width = 250 });
+                });
+                lvi.Tag = product;
+                ProductList.Items.Add(lvi);
+            }
+            ProductList.Columns.Clear();
+            ProductList.Columns.Add(new ColumnHeader() { Name = "Nom", Text = "Nom", Width = 250 });
+            ProductList.Columns.Add(new ColumnHeader() { Name = "Type", Text = "Type", Width = 250 });
+            ProductList.Columns.Add(new ColumnHeader() { Name = "Stock", Text = "Stock", Width = 250 });
+            ProductList.Columns.Add(new ColumnHeader() { Name = "Prix", Text = "Prix", Width = 250 });
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -123,8 +111,32 @@ namespace BTS_Csharp
             else
             {
 
-                Product product = new Product(Name.Text, Type.Text, (int)Price.Value, (int)Stock.Value);
-                ProductManager.AddProduct(product);
+                Product product = new Product((int)id.Value,Name.Text, Type.Text, (int)Price.Value, (int)Stock.Value);
+                productManager.AddProduct(product);
+
+                ProductList.Items.Clear();
+                ProductList.Columns.Clear();
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Nom", Text = "Nom", Width = 250 });
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Type", Text = "Type", Width = 250 });
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Stock", Text = "Stock", Width = 250 });
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Prix", Text = "Prix", Width = 250 });
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Nom Fournisseur", Text = "Nom Fournisseur", Width = 250 });
+                foreach (Product productAff in productManager.AllProducts())
+                {
+                    ListViewItem lvi = new ListViewItem(new string[]
+                    {
+                    productAff.NameProduct.ToString(),
+                    productAff.TypeProduct.ToString(),
+                    productAff.StockProduct.ToString(),
+                    productAff.PriceProduct.ToString(),
+                    productAff.IdFournNavigation.NameFourn.ToString(),
+
+
+                    });
+                    lvi.Tag = productAff;
+                    ProductList.Items.Add(lvi);
+                }
+                
             }
         }
 
@@ -136,9 +148,33 @@ namespace BTS_Csharp
             }
             else
             {
-                ProductManager.RemoveProduct(ProductSelected);
+                productManager.RemoveProduct(ProductSelected);
 
+                ProductList.Items.Clear();
+                ProductList.Columns.Clear();
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Nom", Text = "Nom", Width = 250 });
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Type", Text = "Type", Width = 250 });
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Stock", Text = "Stock", Width = 250 });
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Prix", Text = "Prix", Width = 250 });
+                ProductList.Columns.Add(new ColumnHeader() { Name = "Nom Fournisseur", Text = "Nom Fournisseur", Width = 250 });
+                foreach (Product productAff in productManager.AllProducts())
+                {
+                    ListViewItem lvi = new ListViewItem(new string[]
+                    {
+                    productAff.NameProduct.ToString(),
+                    productAff.TypeProduct.ToString(),
+                    productAff.StockProduct.ToString(),
+                    productAff.PriceProduct.ToString(),
+                    productAff.IdFournNavigation.NameFourn.ToString(),
+
+
+                    });
+                    lvi.Tag = productAff;
+                    ProductList.Items.Add(lvi);
+                }
             }
+            HomePage page = new HomePage();
+            page.Show();
         }
 
         //private void add_quantity_Click(object sender, EventArgs e)
@@ -192,6 +228,7 @@ namespace BTS_Csharp
                 {
                     ProductSelected = selected[0].Tag as Product;
 
+                    id.Value = ProductSelected.IdProduct;
                     Name.Text = ProductSelected.NameProduct;
                     Type.Text = ProductSelected.TypeProduct;
                     Stock.Value = ProductSelected.StockProduct;
@@ -213,9 +250,12 @@ namespace BTS_Csharp
             }
             else
             {
-                Product product = new Product(Name.Text, Type.Text, (int)Price.Value, (int)Stock.Value);
-
+             
+                productManager.EditProduct((int)id.Value, Name.Text, Type.Text, (int)Price.Value, (int)Stock.Value);
             }
+            HomePage page = new HomePage();
+            page.Show();
+         
         }
 
         private void label2_Click_1(object sender, EventArgs e)
@@ -235,31 +275,7 @@ namespace BTS_Csharp
 
         private void ProductList_Click(object sender, EventArgs e)
         {
-            ListView.SelectedListViewItemCollection selected = ProductList.SelectedItems;
-            if (selected.Count == 1)
-            {
-                FournisseurSelected = (selected[0].Tag as Product).IdFournNavigation;
-            }
-
-            FounrData.Columns.Clear();
-            FounrData.Columns.Add(new ColumnHeader() { Name = "Nom", Text = "Nom", Width = 250 });
-            FounrData.Columns.Add(new ColumnHeader() { Name = "Addresse", Text = "Addresse", Width = 250 });
-            FounrData.Columns.Add(new ColumnHeader() { Name = "Code postal", Text = "Code postal", Width = 250 });
-            FounrData.Columns.Add(new ColumnHeader() { Name = "Ville", Text = "Ville", Width = 250 });
-            FounrData.Columns.Add(new ColumnHeader() { Name = "Email", Text = "fournisseur", Width = 250 });
-
-                ListViewItem lvi = new ListViewItem(new string[]
-                {
-                    FournisseurSelected.NameFourn.ToString(),
-                    FournisseurSelected.AddrFounr.ToString(),
-                    FournisseurSelected.CpFounr.ToString(),
-                    FournisseurSelected.CityFourn.ToString(),
-                    FournisseurSelected.EmailFounr.ToString(),
-
-                    
-                });
-                lvi.Tag = product;
-                FounrData.Items.Add(lvi);
+           
          
             
             
