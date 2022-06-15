@@ -18,6 +18,7 @@ namespace app_csharpBTS
     {
         private Decoclass classSelected;
         private Client clientSelected;
+        private Partake partakeSelected;
         classManager classManager = new classManager();
         PartakesManager partakesManager = new PartakesManager();
         ClientManager clientManager = new ClientManager();
@@ -38,7 +39,6 @@ namespace app_csharpBTS
             class_tab.Columns.Add(new ColumnHeader() { Name = "Id", Text = "Id", Width = 100 });
             class_tab.Columns.Add(new ColumnHeader() { Name = "Places", Text = "Places", Width = 100 });
             class_tab.Columns.Add(new ColumnHeader() { Name = "Nom Formation", Text = "Nom Formation", Width = 100 });
-            class_tab.Columns.Add(new ColumnHeader() { Name = "Id staff", Text = "Id staff", Width = 100 });
             //Listview pour les classes
             class_tab.Items.Clear();
             foreach (Decoclass decoclass in classManager.AllClasses())
@@ -48,8 +48,6 @@ namespace app_csharpBTS
                     decoclass.IdClass.ToString(),
                     decoclass.PlaceClass.ToString(),
                     decoclass.NameClass.ToString(),
-                    decoclass.IdStaff.ToString(),
-
                 });
                 lvi.Tag = decoclass;
                 class_tab.Items.Add(lvi);
@@ -152,19 +150,14 @@ namespace app_csharpBTS
         {
 
         }
-        private void Remove_cli_Click(object sender, EventArgs e) 
-        {
-            if (string.IsNullOrEmpty(clientName.Text) || string.IsNullOrEmpty(Firstname.Text) || clientSelected == null)
+        private void member_tab_DoubleClick(object sender, EventArgs e) {
+            ListView.SelectedListViewItemCollection selected = member_tab.SelectedItems;
+            if (selected.Count == 1)
             {
-                MessageBox.Show("Il semblerai que vous avez pas sélectionné de champs");
-            }
-            else
-            {
-                clientManager.RemoveClient(clientSelected);
-
+                partakeSelected = selected[0].Tag as Partake; 
+                partakesManager.RemoveParticipation(partakeSelected.IdClass, partakeSelected.IdCli);
             }
         }
-        private void member_tab_DoubleClick(object sender, EventArgs e) { }
 
         private void email_TextChanged(object sender, EventArgs e)
         {

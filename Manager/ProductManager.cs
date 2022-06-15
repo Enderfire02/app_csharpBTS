@@ -32,7 +32,7 @@ namespace app_csharpBTS.Manager
                 return false;
             return RemoveProduct(product);
         }
-        public void EditProduct(int id, string Name, string Type, int price, int Stock)
+        public void EditProduct(int id, string Name, string Type, int price, int Stock, int idFourn)
         {
             
 
@@ -49,15 +49,23 @@ namespace app_csharpBTS.Manager
             if (product.StockProduct != Stock)
                 product.StockProduct = Stock;
             Context.SaveChanges();
-
+            if (product.IdFourn != idFourn)
+                product.IdFourn = idFourn;
+            Context.SaveChanges();
 
         }
         public Product FindProductID(int idProduct)
         {
             return Context.Products.Find(idProduct);
         }
-        public Product FindProductName(string NameProduct)
-            => Context.Products.FirstOrDefault(product => product.NameProduct == NameProduct);
+       
+       public List<Product> FindProductName(string name)
+        {
+            var list = Context.Products.Where(p => p.NameProduct.Contains(name));
+            return list.ToList();
+        }
+        
+        
         public List<Product> GetProducts()
             => Context.Products.ToList();
         public List<Product> AllProducts() 

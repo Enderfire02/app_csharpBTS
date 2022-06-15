@@ -39,7 +39,6 @@ namespace app_csharpBTS
             this.label7 = new System.Windows.Forms.Label();
             this.Firstname = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.Remove_cli = new System.Windows.Forms.Button();
             this.Add_cli = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -66,7 +65,6 @@ namespace app_csharpBTS
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.Firstname);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.Remove_cli);
             this.panel2.Controls.Add(this.Add_cli);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.textBox2);
@@ -88,7 +86,7 @@ namespace app_csharpBTS
             // remove_class
             // 
             this.remove_class.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.remove_class.Location = new System.Drawing.Point(139, 563);
+            this.remove_class.Location = new System.Drawing.Point(138, 475);
             this.remove_class.Name = "remove_class";
             this.remove_class.Size = new System.Drawing.Size(225, 69);
             this.remove_class.TabIndex = 34;
@@ -121,7 +119,7 @@ namespace app_csharpBTS
             // add_class_btn
             // 
             this.add_class_btn.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.add_class_btn.Location = new System.Drawing.Point(139, 472);
+            this.add_class_btn.Location = new System.Drawing.Point(138, 384);
             this.add_class_btn.Name = "add_class_btn";
             this.add_class_btn.Size = new System.Drawing.Size(225, 69);
             this.add_class_btn.TabIndex = 32;
@@ -163,17 +161,6 @@ namespace app_csharpBTS
             this.label5.Size = new System.Drawing.Size(0, 15);
             this.label5.TabIndex = 27;
             // 
-            // Remove_cli
-            // 
-            this.Remove_cli.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Remove_cli.Location = new System.Drawing.Point(111, 383);
-            this.Remove_cli.Name = "Remove_cli";
-            this.Remove_cli.Size = new System.Drawing.Size(278, 69);
-            this.Remove_cli.TabIndex = 26;
-            this.Remove_cli.Text = "retirer un client du cours";
-            this.Remove_cli.UseVisualStyleBackColor = true;
-            this.Remove_cli.Click += new System.EventHandler(this.Remove_cli_Click);
-            // 
             // Add_cli
             // 
             this.Add_cli.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -188,7 +175,7 @@ namespace app_csharpBTS
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(348, 487);
+            this.label1.Location = new System.Drawing.Point(346, 399);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 15);
             this.label1.TabIndex = 22;
@@ -314,7 +301,6 @@ namespace app_csharpBTS
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox Firstname;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button Remove_cli;
         private System.Windows.Forms.Button Add_cli;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;

@@ -9,7 +9,7 @@ namespace app_csharpBTS.Models
     {
         public staff()
         {
-            Decoclasses = new HashSet<Decoclass>();
+            Manages = new HashSet<Manage>();
             Organizes = new HashSet<Organize>();
         }
 
@@ -17,7 +17,7 @@ namespace app_csharpBTS.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public virtual ICollection<Decoclass> Decoclasses { get; set; }
+        public virtual ICollection<Manage> Manages { get; set; }
         public virtual ICollection<Organize> Organizes { get; set; }
     }
 }

@@ -12,15 +12,6 @@ namespace app_csharpBTS.Models
             Products = new HashSet<Product>();
         }
 
-        public Fournisseur(string nameFourn, string addrFounr, int cpFounr, string cityFourn, string emailFounr)
-        {
-            NameFourn = nameFourn;
-            AddrFounr = addrFounr;
-            CpFounr = cpFounr;
-            CityFourn = cityFourn;
-            EmailFounr = emailFounr;
-        }
-
         public int IdFourn { get; set; }
         public string NameFourn { get; set; }
         public string AddrFounr { get; set; }

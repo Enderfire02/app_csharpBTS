@@ -9,22 +9,21 @@ namespace app_csharpBTS.Models
     {
         public Decoclass()
         {
+            Manages = new HashSet<Manage>();
             Partakes = new HashSet<Partake>();
         }
 
-        public Decoclass(string placeClass, string nameClass, int idStaff)
+        public Decoclass(string placeClass, string nameClass)
         {
             PlaceClass = placeClass;
             NameClass = nameClass;
-            IdStaff = idStaff;
         }
 
         public int IdClass { get; set; }
         public string PlaceClass { get; set; }
         public string NameClass { get; set; }
-        public int IdStaff { get; set; }
 
-        public virtual staff IdStaffNavigation { get; set; }
+        public virtual ICollection<Manage> Manages { get; set; }
         public virtual ICollection<Partake> Partakes { get; set; }
     }
 }

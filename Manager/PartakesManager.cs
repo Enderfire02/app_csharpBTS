@@ -22,8 +22,32 @@ namespace app_csharpBTS.Manager
                 return partake;
             return null;
         }
-
-     
+        public bool RemoveParticipation(Partake partake)
+        {
+            if (partake != null)
+            {
+                Context.Partakes.Remove(partake);
+                return (Context.SaveChanges() > 0);
+            }
+            return false;
+        }
+        public bool RemoveParticipation(int idClient)
+        {
+            Partake partake = FindMemberID(idClient);
+            if (partake == null)
+                return false;
+            return RemoveParticipation(partake);
+        }
+        public bool RemoveParticipation(int idClass, int idClient)
+        {
+            var relation = Context.Partakes.Where(f => f.IdClass == idClass && f.IdCli == idClient).FirstOrDefault();
+            if (relation != null)
+            {
+                Context.Partakes.Remove(relation);
+                return (Context.SaveChanges() > 0);
+            }
+            return false;
+        }
 
         private Partake FindMemberID(int idClient)
         {
