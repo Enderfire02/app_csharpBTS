@@ -36,6 +36,7 @@ namespace app_csharpBTS
             this.panel3 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.execute = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -115,12 +116,22 @@ namespace app_csharpBTS
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // execute
+            // 
+            this.execute.Location = new System.Drawing.Point(313, 554);
+            this.execute.Name = "execute";
+            this.execute.Size = new System.Drawing.Size(75, 23);
+            this.execute.TabIndex = 7;
+            this.execute.Text = "executer la procédure";
+            this.execute.UseVisualStyleBackColor = true;
+            // 
             // alert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1325, 635);
+            this.Controls.Add(this.execute);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel3);
             this.Name = "alert";
@@ -141,5 +152,6 @@ namespace app_csharpBTS
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button execute;
     }
 }

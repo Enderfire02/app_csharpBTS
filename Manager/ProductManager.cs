@@ -73,5 +73,10 @@ namespace app_csharpBTS.Manager
             var list = Context.Products.Include(p => p.IdFournNavigation).AsQueryable();
             return list.ToList();
         }
+        public List<Product> psStock()
+        {
+            var list = Context.Set().FromSql("quantity");
+        }
+           
     }
 }
