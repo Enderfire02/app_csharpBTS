@@ -12,12 +12,13 @@ namespace app_csharpBTS.Models
             Organizes = new HashSet<Organize>();
         }
 
-        public Product(string nameProduct, string typeProduct, int priceProduct, int stockProduct, int idFourn)
+        public Product(string nameProduct, string typeProduct, int priceProduct, int stockProduct, int stockMinProduct, int idFourn)
         {
             NameProduct = nameProduct;
             TypeProduct = typeProduct;
             PriceProduct = priceProduct;
             StockProduct = stockProduct;
+            StockMinProduct = stockMinProduct;
             IdFourn = idFourn;
         }
 
@@ -26,6 +27,7 @@ namespace app_csharpBTS.Models
         public string TypeProduct { get; set; }
         public int PriceProduct { get; set; }
         public int StockProduct { get; set; }
+        public int StockMinProduct { get; set; }
         public int IdFourn { get; set; }
 
         public virtual Fournisseur IdFournNavigation { get; set; }

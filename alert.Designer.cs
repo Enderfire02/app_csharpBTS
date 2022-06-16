@@ -124,6 +124,7 @@ namespace app_csharpBTS
             this.execute.TabIndex = 7;
             this.execute.Text = "executer la procédure";
             this.execute.UseVisualStyleBackColor = true;
+            this.execute.Click += new System.EventHandler(this.execute_Click);
             // 
             // alert
             // 

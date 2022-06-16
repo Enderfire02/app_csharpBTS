@@ -1,10 +1,7 @@
 ﻿using app_csharpBTS.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 namespace app_csharpBTS.Manager
 {
     class ProductManager : DataManager
@@ -32,10 +29,8 @@ namespace app_csharpBTS.Manager
                 return false;
             return RemoveProduct(product);
         }
-        public void EditProduct(int id, string Name, string Type, int price, int Stock, int idFourn)
+        public void EditProduct(int id, string Name, string Type, int price, int Stock, int minStock,int idFourn)
         {
-            
-
             Models.Product product = FindProductID(id);
             if (product.NameProduct != Name)
                 product.NameProduct = Name;
@@ -48,6 +43,9 @@ namespace app_csharpBTS.Manager
             Context.SaveChanges();
             if (product.StockProduct != Stock)
                 product.StockProduct = Stock;
+            Context.SaveChanges();
+            if (product.StockMinProduct != minStock)
+                product.StockMinProduct = minStock;
             Context.SaveChanges();
             if (product.IdFourn != idFourn)
                 product.IdFourn = idFourn;
@@ -75,7 +73,8 @@ namespace app_csharpBTS.Manager
         }
         public List<Product> psStock()
         {
-            var list = Context.Set().FromSql("quantity");
+            var list = Context.Database.ExecuteSqlRaw("CALL quantityUpdate");
+            return new List<Product>();
         }
            
     }

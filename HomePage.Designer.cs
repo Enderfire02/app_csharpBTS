@@ -45,6 +45,8 @@ namespace BTS_Csharp
             this.label7 = new System.Windows.Forms.Label();
             this.Change = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.minStock = new System.Windows.Forms.NumericUpDown();
             this.idprod = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.idFourn = new System.Windows.Forms.NumericUpDown();
@@ -54,7 +56,6 @@ namespace BTS_Csharp
             this.research = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.StocksLabel = new System.Windows.Forms.Label();
-            this.ProductList = new System.Windows.Forms.ListView();
             this.Stock = new System.Windows.Forms.NumericUpDown();
             this.Price = new System.Windows.Forms.NumericUpDown();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -63,8 +64,10 @@ namespace BTS_Csharp
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.ProductList = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.minStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.idprod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.idFourn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stock)).BeginInit();
@@ -226,6 +229,8 @@ namespace BTS_Csharp
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.minStock);
             this.panel2.Controls.Add(this.idprod);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.idFourn);
@@ -250,6 +255,22 @@ namespace BTS_Csharp
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1073, 637);
             this.panel2.TabIndex = 22;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(460, 516);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 15);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "Stock min :";
+            // 
+            // minStock
+            // 
+            this.minStock.Location = new System.Drawing.Point(532, 516);
+            this.minStock.Name = "minStock";
+            this.minStock.Size = new System.Drawing.Size(182, 23);
+            this.minStock.TabIndex = 35;
             // 
             // idprod
             // 
@@ -331,20 +352,6 @@ namespace BTS_Csharp
             this.StocksLabel.TabIndex = 25;
             this.StocksLabel.Text = "Stocks :";
             this.StocksLabel.Click += new System.EventHandler(this.label2_Click_1);
-            // 
-            // ProductList
-            // 
-            this.ProductList.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ProductList.FullRowSelect = true;
-            this.ProductList.HideSelection = false;
-            this.ProductList.Location = new System.Drawing.Point(47, 90);
-            this.ProductList.Name = "ProductList";
-            this.ProductList.Size = new System.Drawing.Size(982, 370);
-            this.ProductList.TabIndex = 22;
-            this.ProductList.UseCompatibleStateImageBehavior = false;
-            this.ProductList.View = System.Windows.Forms.View.Details;
-            this.ProductList.Click += new System.EventHandler(this.ProductList_Click);
-            this.ProductList.DoubleClick += new System.EventHandler(this.ProductList_DoubleClick);
             // 
             // Stock
             // 
@@ -430,6 +437,19 @@ namespace BTS_Csharp
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Stocks_Click);
             // 
+            // ProductList
+            // 
+            this.ProductList.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.ProductList.FullRowSelect = true;
+            this.ProductList.HideSelection = false;
+            this.ProductList.Location = new System.Drawing.Point(47, 90);
+            this.ProductList.Name = "ProductList";
+            this.ProductList.Size = new System.Drawing.Size(982, 370);
+            this.ProductList.TabIndex = 22;
+            this.ProductList.UseCompatibleStateImageBehavior = false;
+            this.ProductList.View = System.Windows.Forms.View.Details;
+            this.ProductList.DoubleClick += new System.EventHandler(this.ProductList_DoubleClick);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -447,6 +467,7 @@ namespace BTS_Csharp
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.minStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.idprod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.idFourn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Stock)).EndInit();
@@ -476,7 +497,6 @@ namespace BTS_Csharp
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button Change;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ListView ProductList;
         private System.Windows.Forms.NumericUpDown Price;
         private System.Windows.Forms.NumericUpDown Stock;
         private System.Windows.Forms.Label StocksLabel;
@@ -495,6 +515,9 @@ namespace BTS_Csharp
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown idFourn;
         private System.Windows.Forms.NumericUpDown idprod;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown minStock;
+        private System.Windows.Forms.ListView ProductList;
     }
 }
 

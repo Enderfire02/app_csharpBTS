@@ -1,4 +1,5 @@
-﻿using System;
+﻿using app_csharpBTS.Manager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace app_csharpBTS
 {
     public partial class alert : Form
     {
+        ProductManager productManager = new ProductManager();
         public alert()
         {
             InitializeComponent();
@@ -24,7 +26,12 @@ namespace app_csharpBTS
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
 
+        private void execute_Click(object sender, EventArgs e)
+        {
+            productManager.psStock();
         }
     }
 }

@@ -261,6 +261,7 @@ namespace app_csharpBTS
             this.Alertes.TabIndex = 1;
             this.Alertes.Text = "Alertes";
             this.Alertes.UseVisualStyleBackColor = true;
+            this.Alertes.Click += new System.EventHandler(this.Alertes_Click);
             // 
             // Stocks
             // 

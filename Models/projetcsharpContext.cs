@@ -244,6 +244,10 @@ namespace app_csharpBTS.Models
                     .HasColumnType("int(11)")
                     .HasColumnName("Price_Product");
 
+                entity.Property(e => e.StockMinProduct)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("stockMin_Product");
+
                 entity.Property(e => e.StockProduct)
                     .HasColumnType("int(11)")
                     .HasColumnName("Stock_Product");

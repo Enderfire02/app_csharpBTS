@@ -37,6 +37,7 @@ namespace BTS_Csharp
                     product.NameProduct.ToString(),
                     product.TypeProduct.ToString(),
                     product.StockProduct.ToString(),
+                    product.StockMinProduct.ToString(),
                     product.PriceProduct.ToString(),
                     product.IdFournNavigation.NameFourn.ToString(),
 
@@ -49,6 +50,7 @@ namespace BTS_Csharp
             ProductList.Columns.Add(new ColumnHeader() { Name = "Nom", Text = "Nom", Width = 250 });
             ProductList.Columns.Add(new ColumnHeader() { Name = "Type", Text = "Type", Width = 250 });
             ProductList.Columns.Add(new ColumnHeader() { Name = "Stock", Text = "Stock", Width = 250 });
+            ProductList.Columns.Add(new ColumnHeader() { Name = "Stock Minimum", Text = "Stock Minimum", Width = 250 });
             ProductList.Columns.Add(new ColumnHeader() { Name = "Prix", Text = "Prix", Width = 250 });
             ProductList.Columns.Add(new ColumnHeader() { Name = "Nom Fournisseur", Text = "Nom Fournisseur", Width = 250 });
         }
@@ -56,11 +58,29 @@ namespace BTS_Csharp
         
         private void HomePageB_load()
         {
-            ProductReloadData(productManager.AllProducts());
+           
+            ProductList.Items.Clear();
+            foreach (Product productAff in productManager.AllProducts())
+            {
+                ListViewItem lvi = new ListViewItem(new string[]
+                {
+                    productAff.NameProduct.ToString(),
+                    productAff.TypeProduct.ToString(),
+                    productAff.StockProduct.ToString(),
+                    productAff.StockMinProduct.ToString(),
+                    productAff.PriceProduct.ToString(),
+                    productAff.IdFournNavigation.NameFourn.ToString(),
+
+
+                });
+                lvi.Tag = productAff;
+                ProductList.Items.Add(lvi);
+            }
             ProductList.Columns.Clear();
             ProductList.Columns.Add(new ColumnHeader() { Name = "Nom", Text = "Nom", Width = 250 });
             ProductList.Columns.Add(new ColumnHeader() { Name = "Type", Text = "Type", Width = 250 });
-            ProductList.Columns.Add(new ColumnHeader() { Name = "Stock", Text = "Stock", Width = 250 });
+            ProductList.Columns.Add(new ColumnHeader() { Name = "Stock", Text = "Stock", Width = 50 });
+            
             ProductList.Columns.Add(new ColumnHeader() { Name = "Prix", Text = "Prix", Width = 250 });
             ProductList.Columns.Add(new ColumnHeader() { Name = "Nom Fournisseur", Text = "Nom Fournisseur", Width = 250 });
         }
@@ -79,9 +99,26 @@ namespace BTS_Csharp
             }
             else
             {
-                Product product = new Product(Name.Text, Type.Text, (int)Price.Value, (int)Stock.Value, (int)idFourn.Value);
+                Product product = new Product(Name.Text, Type.Text, (int)Price.Value, (int)Stock.Value, (int)minStock.Value,(int)idFourn.Value);
                 productManager.AddProduct(product);
-                ProductReloadData(productManager.AllProducts());               
+                
+                ProductList.Items.Clear();
+                foreach (Product productAff in productManager.AllProducts())
+                {
+                    ListViewItem lvi = new ListViewItem(new string[]
+                    {
+                        productAff.NameProduct.ToString(),
+                        productAff.TypeProduct.ToString(),
+                        productAff.StockProduct.ToString(),
+                        productAff.StockMinProduct.ToString(),
+                        productAff.PriceProduct.ToString(),
+                        productAff.IdFournNavigation.NameFourn.ToString(),
+
+
+                    });
+                    lvi.Tag = productAff;
+                    ProductList.Items.Add(lvi);
+                }
             }
         }
 
@@ -111,11 +148,10 @@ namespace BTS_Csharp
             form.Show();
 
         }
-
+        
         private void ProductList_DoubleClick(object sender, EventArgs e)
         {
-            
-                ListView.SelectedListViewItemCollection selected = ProductList.SelectedItems;
+            ListView.SelectedListViewItemCollection selected = ProductList.SelectedItems;
             if (selected.Count == 1)
             {
                 ProductSelected = selected[0].Tag as Product;
@@ -124,9 +160,11 @@ namespace BTS_Csharp
                 Name.Text = ProductSelected.NameProduct;
                 Type.Text = ProductSelected.TypeProduct;
                 Stock.Value = ProductSelected.StockProduct;
+                minStock.Value = ProductSelected.StockMinProduct;
                 Price.Value = ProductSelected.PriceProduct;
                 idFourn.Value = ProductSelected.IdFourn;
             }
+      
         }
 
         private void Change_Click(object sender, EventArgs e)
@@ -137,8 +175,21 @@ namespace BTS_Csharp
             }
             else
             {
-                ProductReloadData(productManager.AllProducts());
-                productManager.EditProduct((int)idprod.Value, Name.Text, Type.Text, (int)Price.Value, (int)Stock.Value, (int)idFourn.Value);
+                foreach (Product productAff in productManager.AllProducts())
+                {
+                    ListViewItem lvi = new ListViewItem(new string[]
+                    {
+                        productAff.NameProduct.ToString(),
+                        productAff.TypeProduct.ToString(),
+                        productAff.StockProduct.ToString(),
+                        productAff.StockMinProduct.ToString(),
+                        productAff.PriceProduct.ToString(),
+                        productAff.IdFournNavigation.NameFourn.ToString(),
+                    });
+                    lvi.Tag = productAff;
+                    ProductList.Items.Add(lvi);
+                }
+                productManager.EditProduct((int)idprod.Value, Name.Text, Type.Text, (int)Price.Value, (int)Stock.Value, (int)minStock.Value,(int)idFourn.Value);
             }
             HomePage page = new HomePage();
             page.Show();
@@ -146,25 +197,16 @@ namespace BTS_Csharp
         }
         private void ProductReloadData(List<Product> list)
         {
-            ProductList.Items.Clear();
-            foreach (Product productAff in list)
-            {
-                ListViewItem lvi = new ListViewItem(new string[]
-                {
-                    productAff.NameProduct.ToString(),
-                    productAff.TypeProduct.ToString(),
-                    productAff.StockProduct.ToString(),
-                    productAff.PriceProduct.ToString(),
-                    productAff.IdFournNavigation.NameFourn.ToString(),
-
-
-                });
-                lvi.Tag = productAff;
-                ProductList.Items.Add(lvi);
-            }
+            
         }
-    
-        #region Trash
+        private void Alertes_Click(object sender, EventArgs e)
+        {
+            alert page = new alert();
+            page.Show();
+        }
+
+
+        #region superflu
         private void label2_Click_1(object sender, EventArgs e)
         {
 
@@ -173,14 +215,6 @@ namespace BTS_Csharp
         private void Name_TextChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void ProductList_Click(object sender, EventArgs e)
-        {
-           
-         
-            
-            
         }
 
         private void FounrData_SelectedIndexChanged(object sender, EventArgs e)
@@ -221,11 +255,7 @@ namespace BTS_Csharp
         {
 
         }
-        private void Alertes_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void Stocks_Click(object sender, EventArgs e)
         {
 
@@ -244,8 +274,17 @@ namespace BTS_Csharp
         {
 
         }
+
         #endregion
 
+        private void ProductList_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void productlist2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

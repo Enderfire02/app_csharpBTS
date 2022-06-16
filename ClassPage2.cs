@@ -186,7 +186,17 @@ namespace app_csharpBTS
         {
 
         }
+
+        private void Alertes_Click(object sender, EventArgs e)
+        {
+            
+                alert page = new alert();
+                page.Show();
+           
+
+        }
     }
     #endregion
+
 }
 
